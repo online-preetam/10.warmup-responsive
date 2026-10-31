@@ -1,313 +1,232 @@
-*{
-    box-sizing: border-box;
-}
+/* =========================================================
+   1. VARIABLES
+   One small set, named by ROLE (what the value is used for).
+   Reuse a variable only when it is the SAME decision.
+   ========================================================= */
 :root {
-  /* Layer 1: the raw palette (few colors) */
-  --black1: rgba(0,0,0,1);
-  --red1: rgba(255,0,0,1);
-  --blue1:rgba(0,68,221,1);
-  --white1: rgba(255,255,255,1);
-  --gray1: rgba(194,194,194,1);
-  --gray2: rgba(116,116,116,1);
-  --gray3: rgba(154,154,154,1);
-  --rotation1: 0deg;
-  --rotation2: 45deg;
-  --rotation3: -45deg;
-  --animation1: all .5s ease-out;
+  --color-text: rgba(31,31,31,1);        /* body text, hamburger bars */
+  --color-text-hover: rgba(176,0,32,1);  /* link hover (about 7:1 on white) */
+  --color-primary: rgba(0,68,221,1);     /* button, focus ring (about 7:1 on white) */
+  --color-on-primary: rgba(255,255,255,1);     /* text on top of the primary color */
+  --color-border: rgba(154,154,154,1);      /* every divider and card border */
+  --color-surface: rgba(239,239,239,1);     /* mobile menu background */
 
-  /* Layer 2: what each color is used for */
-  --menu-link: var(--black1);
-  --menu-link-hover: var(--red1);
-  --menu-list-bg-one: var(--gray1);
-  --menu-list-border-bottom: var(--gray2);
-  --header-bottom-border: var(--gray3);
-  --menu-hover-animation: var(--animation1);
-  --hero-bottom-border: var(--gray3);
-  --hero-button-color: var(--blue1);
-  --hero-button-border-color: var(--blue1);
-  --hero-hover-animation: var(--animation1);
-  --hero-button-hover-color: var(--white1);
-  --hero-button-hover-bg-color: var(--blue1);
-  --footer-menu-border-link: var(--black1);
-  --toggle-bg-color: var(--black1);
-  --toggle-rotation-one: var(--rotation1);
-  --toggle-rotation-two: var(--rotation2);
-  --toggle-rotation-three: var(--rotation3);
-  --toggle-animation-one: var(--animation1);
-  --main-bottom-border: var(--gray3);
-  --footer-bottom-border: var(--gray3);
+  --transition: 0.3s ease-out;  /* every hover and menu animation */
+  --bar-gap: 8px;               /* distance between hamburger bars */
 }
-body{
-    margin: 0; 
-    padding: 0;
-    font:normal 0.875rem/1.5 Arial, Helvetica, sans-serif;
-}
-.wrapper{
-    padding: 15px;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1200px;
-    min-height: 100vh;
-}
-.wrapper *:last-child{
-    margin-bottom: 0;
-}
-header{
-    padding: 15px 0;
-    margin: 0 0 15px 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--header-bottom-border); 
-    position: relative;
-}
-.logo{
-    padding: 0;
-    margin: 0 50px 0 0;
-    max-width: 100px;
-}
-.logo a{
-    padding: 0;
-    margin: 0;
-}
-.logo a img{
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
-    height: auto;
-}
-.main-menu{
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-.main-menu ul{
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    display: flex;
-}
-.main-menu ul li{
-    padding: 0;
-    margin: 0 15px 0 0;
-}
-.main-menu ul li:last-of-type{
-    margin: 0;
-}
-.main-menu ul li a{
-    color: var(--menu-link);
-    text-decoration: none;
-    transition: var(--menu-hover-animation);
-    text-transform: uppercase;
-}
-.main-menu ul li:hover a{
-    color: var(--menu-link-hover);
-    transition: var(--menu-hover-animation);
-}
-.hero-section{
-    padding: 0 0 15px 0;
-    margin: 0 0 15px 0;
-    border-bottom: 1px solid var(--hero-bottom-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.hero-section h1{
-    text-transform: uppercase;
-    font-size: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-    text-align: center;
-}
-.hero-button{
-    padding: 15px;
-    margin: 0;
-    border-radius: 3px;
-    color: var(--hero-button-color);
-    background-color: transparent;
-    border: 1px solid var(--hero-button-border-color);
-    text-decoration: none;
-    transition: var(--hero-hover-animation);
 
+/* =========================================================
+   2. BASE
+   ========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.hero-button:hover{
-    color: var(--hero-button-hover-color);
-    background-color: var(--hero-button-hover-bg-color);
-    transition: var(--hero-hover-animation);
 
+body {
+  font: 0.875rem/1.5 Arial, Helvetica, sans-serif;
+  color: var(--color-text);
 }
-.card-section{
-    padding: 0 0 15px 0;
-    margin: 0 0 15px 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0 15px;
+
+ul {
+  list-style: none;
 }
-.card{
-    padding: 15px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 3px;
-    border:1px solid var(--gray3);
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
-.icon-holder{
-    padding: 0;
-    margin: 0 0 15px 0;
-    width: 100%;
-    text-align: center;
+
+/* =========================================================
+   3. LAYOUT
+   ========================================================= */
+.wrapper {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 15px;
 }
-.icon-holder img{
-    padding: 0;
-    margin: 0;
-    max-width: 100%;
-    height: auto;
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-border);
 }
-.card h2{
-    padding: 0;
-    margin: 0 0 15px 0;
-    width: 100%;
-    text-align: center;
-    font-size: 1.125rem;
-    text-transform: uppercase;
+
+/* =========================================================
+   4. HEADER AND MENUS
+   ========================================================= */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-border);
 }
-.card p{
-    padding: 0;
-    margin: 0 0 15px 0;
-    width: 100%;
-    text-align: center;
-    font-size: 0.875rem;
+
+.logo {
+  max-width: 100px;
+  margin-right: 50px;
 }
-.card *:last-child{
-    margin-bottom: 0;
+
+.logo img {
+  max-width: 100%;
+  height: auto;
 }
-footer{
-    padding: 0;
-    margin: 0 0 15px 0;
-    display: flex;
-    justify-content: space-between;
+
+.main-menu {
+  display: flex;
+  align-items: center;
 }
-footer > div{
-    padding: 0;
-    margin: 0 15px 0 0;
+
+.main-menu ul {
+  display: flex;
+  gap: 15px;
 }
-footer > div:last-of-type{
-    margin-right:0;
+
+.footer-menu ul {
+  display: flex;
+  gap: 10px;
 }
-.copyright{
-    font-size: 0.875rem;
+
+.footer-menu li:not(:last-child) {
+  padding-right: 10px;
+  border-right: 1px solid var(--color-border);
 }
-.footer-menu{
-    padding: 0;
-    margin: 0;
+
+/* Both menus share the same link style */
+.main-menu a,
+.footer-menu a {
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition);
 }
-.footer-menu ul{
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    display: flex;
+
+.main-menu a:hover,
+.footer-menu a:hover {
+  color: var(--color-text-hover);
 }
-.footer-menu ul li{
-    padding: 0 5px 0 0;
-    margin: 0 5px 0 0;
-    border-right: 1px solid var(--footer-menu-border-link);
-}
-.footer-menu ul li:last-of-type{
-    padding: 0;
-    margin: 0;
-    border-right: none;
-}
-.footer-menu ul li a{
-    padding: 0;
-    margin: 0;
-    color: var(--menu-link);
-    font-size: 0.875rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: var(--menu-hover-animation);
-}
-.footer-menu ul li:hover a{
-    color: var(--menu-link-hover);
-    transition: var(--menu-hover-animation);
-}
+
+/* =========================================================
+   5. HAMBURGER BUTTON
+   Three bars. Open state: top and bottom bars rotate into
+   an X while the middle bar fades out.
+   ========================================================= */
 .menu-toggle {
+  display: none;               /* shown in media.css on small screens */
+  position: relative;
+  width: 24px;
+  height: 24px;
   background: none;
   border: 0;
-  padding: 0;
-  margin: 0;
   cursor: pointer;
-  position: relative;
-  display: none;
-  width: 22px;
-  height: 22px;
-  right: 0;
 }
-.menu-toggle:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+
+.menu-toggle span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 2px;
+  background-color: var(--color-text);
+  transition: transform var(--transition), opacity var(--transition);
 }
-.menu-toggle span{
-    padding: 0;
-    margin: 0;
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color: var(--toggle-bg-color);
-   
+
+.menu-toggle span:nth-of-type(1) {
+  transform: translateY(calc(var(--bar-gap) * -1));
 }
-.menu-toggle span:nth-of-type(1){
-    top:0;
-    left:50%;
-    rotate: var(--toggle-rotation-one);
-    transition: var(--toggle-animation-one);
-    transform: translate(-50%, 0);
+
+.menu-toggle span:nth-of-type(3) {
+  transform: translateY(var(--bar-gap));
 }
-.menu-toggle.active span:nth-of-type(1){
-    top:18px;
-    rotate: var(--toggle-rotation-two);
-    transition: var(--toggle-animation-one);
-    margin-left:-3px;
-    
+
+.menu-toggle.active span:nth-of-type(1) {
+  transform: rotate(45deg);
 }
-.menu-toggle span:nth-of-type(3){
-    bottom:0;
-    left:50%;
-    rotate: var(--toggle-rotation-one);
-    transition: var(--toggle-animation-one);
-    transform: translate(-50%, 0);
+
+.menu-toggle.active span:nth-of-type(2) {
+  opacity: 0;
 }
-.menu-toggle.active span:nth-of-type(3){
-    bottom:18px;
-    rotate: var(--toggle-rotation-three);
-    transition: var(--toggle-animation-one);
-    margin-bottom:-2px;
-    margin-left:-3px;
+
+.menu-toggle.active span:nth-of-type(3) {
+  transform: rotate(-45deg);
 }
-.menu-toggle span:nth-of-type(2){
-    top:50%;
-    left:50%;
-    rotate: var(--rotation1);
-    transition: var(--toggle-rotation-one);
-    transform: translate(-50%, -50%);
+
+/* =========================================================
+   6. HERO
+   ========================================================= */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0 15px;
+  border-bottom: 1px solid var(--color-border);
 }
-.menu-toggle.active span:nth-of-type(2){
-    background-color: rgba(0, 0, 0, 0);
-    transition: var(--toggle-rotation-one);
+
+.hero-section h1 {
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+  text-align: center;
+  text-transform: uppercase;
 }
-.main-section{
-    padding: 0 0 15px 0; 
-    margin: 0 0 15px 0;
-    border-bottom: 1px solid var(--main-bottom-border);
+
+.hero-button {
+  padding: 15px;
+  border: 1px solid var(--color-primary);
+  border-radius: 3px;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition), background-color var(--transition);
 }
- .main-section > *:last-child{
-    padding-bottom: 0;
-    margin-bottom: 0;
+
+.hero-button:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
 }
-.main-menu ul li a:focus-visible,
-.footer-menu ul li a:focus-visible,
-.hero-button:focus-visible {
-  outline: 2px solid var(--blue1);
-  outline-offset: 3px;
+
+/* =========================================================
+   7. CARDS
+   ========================================================= */
+.card-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  text-align: center;
+}
+
+.icon-holder img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card h2 {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   8. FOOTER
+   ========================================================= */
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
 }
