@@ -1,18 +1,41 @@
 *{
     box-sizing: border-box;
 }
-:root{
-    --colourOne:rgba(0,0,0,1);
-    --colourTwo:rgba(255,0,0,1);
-    --colourThree:rgba(0,68,221,1);
-    --colourfour:rgba(255,255,255,1);
-    --responsivemenu-bacground-color:rgba(156,156,156,1);
-    --responsivemenu-bottom-border-color:rgba(116,116,116,1);
-    --BordercolourOne:rgba(154,154,154,1);
-    --rotationOne: rotate(0);
-    --rotationTwo: rotate(45deg);
-    --rotationThree: rotate(-45deg);
-    --animationOne: all .5s ease-out;
+:root {
+  /* Layer 1: the raw palette (few colors) */
+  --black1: rgba(0,0,0,1);
+  --red1: rgba(255,0,0,1);
+  --blue1:rgba(0,68,221,1);
+  --white1: rgba(255,255,255,1);
+  --gray1: rgba(194,194,194,1);
+  --gray2: rgba(116,116,116,1);
+  --gray3: rgba(154,154,154,1);
+  --rotation1: 0deg;
+  --rotation2: 45deg;
+  --rotation3: -45deg;
+  --animation1: all .5s ease-out;
+
+  /* Layer 2: what each color is used for */
+  --menu-link: var(--black1);
+  --menu-link-hover: var(--red1);
+  --menu-list-bg-one: var(--gray1);
+  --menu-list-border-bottom: var(--gray2);
+  --header-bottom-border: var(--gray3);
+  --menu-hover-animation: var(--animation1);
+  --hero-bottom-border: var(--gray3);
+  --hero-button-color: var(--blue1);
+  --hero-button-border-color: var(--blue1);
+  --hero-hover-animation: var(--animation1);
+  --hero-button-hover-color: var(--white1);
+  --hero-button-hover-bg-color: var(--blue1);
+  --footer-menu-border-link: var(--black1);
+  --toggle-bg-color: var(--black1);
+  --toggle-rotation-one: var(--rotation1);
+  --toggle-rotation-two: var(--rotation2);
+  --toggle-rotation-three: var(--rotation3);
+  --toggle-animation-one: var(---animation1);
+  --main-bottom-border: var(--gray3);
+  --footer-bottom-border: var(--gray3);
 }
 body{
     margin: 0; 
@@ -21,7 +44,7 @@ body{
 }
 .wrapper{
     padding: 15px;
-    margin-inline: auto;
+    margin: 0 auto;
     width: 100%;
     max-width: 1200px;
     min-height: 100vh;
@@ -36,7 +59,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid var(--BordercolourOne); 
+    border-bottom: 1px solid var(--header-bottom-border); 
     position: relative;
 }
 .logo{
@@ -47,7 +70,6 @@ header{
 .logo a{
     padding: 0;
     margin: 0;
-    outline: none;
 }
 .logo a img{
     padding: 0;
@@ -75,18 +97,19 @@ header{
     margin: 0;
 }
 .main-menu ul li a{
-    color: var(--colourOne);
+    color: var(--menu-link);
     text-decoration: none;
-    transition: var(--animationOne);
+    transition: var(--menu-hover-animation);
     text-transform: uppercase
 }
 .main-menu ul li:hover a{
-    color: var(--colourTwo);
+    color: var(--menu-link-hover);
+    transition: var(--menu-hover-animation);
 }
 .hero-section{
     padding: 0 0 15px 0;
     margin: 0 0 15px 0;
-    border-bottom: 1px solid var(--BordercolourOne);
+    border-bottom: 1px solid var(--hero-bottom-border);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,23 +123,24 @@ header{
     padding: 15px;
     margin: 0;
     border-radius: 3px;
-    color: var(--colourThree);
+    color: var(--hero-button-color);
     background-color: transparent;
-    border: 1px solid var(--colourThree);
+    border: 1px solid var(--hero-button-border-color);
     text-decoration: none;
-    transition: var(--animationOne);
+    transition: var(--hero-hover-animation);
 
 }
 .hero-button:hover{
-    color: var(--colourfour);
-    background-color: var(--colourThree);
+    color: var(--hero-button-hover-color);
+    background-color: var(--hero-button-hover-bg-color);
+    transition: var(--hero-hover-animation);
 
 }
 .card-section{
     padding: 0 0 15px 0;
     margin: 0 0 15px 0;
     display: grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0 15px;
 }
 .card{
@@ -126,7 +150,7 @@ header{
     flex-direction: column;
     align-items: center;
     border-radius: 3px;
-    border:1px solid var(--BordercolourOne);
+    border:1px solid var(--gray3);
 }
 .icon-holder{
     padding: 0;
@@ -146,7 +170,7 @@ header{
     width: 100%;
     text-align: center;
     font-size: 1.125rem;
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 .card p{
     padding: 0;
@@ -187,7 +211,7 @@ footer > div:last-of-type{
 .footer-menu ul li{
     padding: 0 5px 0 0;
     margin: 0 5px 0 0;
-    border-right: 1px solid rgba(0,0,0,1);
+    border-right: 1px solid var(--footer-menu-border-link);
 }
 .footer-menu ul li:last-of-type{
     padding: 0;
@@ -197,13 +221,15 @@ footer > div:last-of-type{
 .footer-menu ul li a{
     padding: 0;
     margin: 0;
-    color: rgba(0,0,0,1);
+    color: var(--menu-link);
     font-size: 0.75rem;
     text-decoration: none;
-    text-transform: uppercase
+    text-transform: uppercase;
+    transition: var(--menu-hover-animation);
 }
 .footer-menu ul li:hover a{
-    color: var(--colourTwo);;
+    color: var(--menu-link-hover);
+    transition: var(--menu-hover-animation);
 }
 .menu-toggle {
   background: none;
@@ -228,58 +254,60 @@ footer > div:last-of-type{
     position: absolute;
     width: 100%;
     height: 3px;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: var(--toggle-bg-color);
    
 }
 .menu-toggle span:nth-of-type(1){
     top:0;
     left:50%;
-    rotate: var(--rotationOne);
-    transition: var(--animationOne);
-    transform: translate(-50%, -50%);
+    rotate: var(--toggle-rotation-one);
+    transition: var(--toggle-animation-one);
+    transform: translate(-50%, 0);
 }
 .menu-toggle.active span:nth-of-type(1){
-    top:50%;
-    left: 50%;
-    rotate: var(--rotationTwo);
-    transition: var(--animationOne);
-    transform: translate(-50%, -50%);
-    margin-top:8px;
-    margin-left:-4px;
+    top:18px;
+    rotate: var(--toggle-rotation-two);
+    transition: var(--toggle-animation-one);
+    margin-left:-3px;
+    
 }
 .menu-toggle span:nth-of-type(3){
     bottom:0;
     left:50%;
-    rotate: var(--rotationOne);
-    transition: var(--animationOne);
-    transform: translate(-50%, -50%);
+    rotate: var(--toggle-rotation-one);
+    transition: var(--toggle-animation-one);
+    transform: translate(-50%, 0);
 }
 .menu-toggle.active span:nth-of-type(3){
-    bottom:50%;
-    left:50%;
-    rotate: var(--rotationThree);
-    transition: var(--animationOne);
-    transform: translate(-50%, -50%);
-    margin-bottom:4px;
+    bottom:18px;
+    rotate: var(--toggle-rotation-three);
+    transition: var(--toggle-animation-one);
+    margin-bottom:-2px;
     margin-left:-3px;
 }
 .menu-toggle span:nth-of-type(2){
     top:50%;
     left:50%;
-    rotate: var(--rotationOne);
-    transition: var(--animationOne);
+    rotate: var(--rotation1);
+    transition: var(--toggle-rotation-one);
     transform: translate(-50%, -50%);
 }
 .menu-toggle.active span:nth-of-type(2){
     background-color: rgba(0, 0, 0, 0);
-    transition: var(--animationOne);
+    transition: var(--toggle-rotation-one);
 }
 .main-section{
     padding: 0 0 15px 0; 
     margin: 0 0 15px 0;
-    border-bottom: 1px solid var(--BordercolourOne);
+    border-bottom: 1px solid var(--main-bottom-border);
 }
  .main-section > *:last-child{
     padding-bottom: 0;
     margin-bottom: 0;
+}
+.main-menu ul li a:focus-visible,
+.footer-menu ul li a:focus-visible,
+.hero-button:focus-visible {
+  outline: 2px solid var(--blue1);
+  outline-offset: 3px;
 }
