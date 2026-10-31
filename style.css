@@ -33,7 +33,7 @@
   --toggle-rotation-one: var(--rotation1);
   --toggle-rotation-two: var(--rotation2);
   --toggle-rotation-three: var(--rotation3);
-  --toggle-animation-one: var(---animation1);
+  --toggle-animation-one: var(--animation1);
   --main-bottom-border: var(--gray3);
   --footer-bottom-border: var(--gray3);
 }
@@ -100,7 +100,7 @@ header{
     color: var(--menu-link);
     text-decoration: none;
     transition: var(--menu-hover-animation);
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 .main-menu ul li:hover a{
     color: var(--menu-link-hover);
@@ -177,7 +177,7 @@ header{
     margin: 0 0 15px 0;
     width: 100%;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
 }
 .card *:last-child{
     margin-bottom: 0;
@@ -196,7 +196,7 @@ footer > div:last-of-type{
     margin-right:0;
 }
 .copyright{
-    font-size: 0.75rem;
+    font-size: 0.875rem;
 }
 .footer-menu{
     padding: 0;
@@ -222,7 +222,7 @@ footer > div:last-of-type{
     padding: 0;
     margin: 0;
     color: var(--menu-link);
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     text-decoration: none;
     text-transform: uppercase;
     transition: var(--menu-hover-animation);
