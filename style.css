@@ -1,23 +1,17 @@
-/* =========================================================
-   1. VARIABLES
-   One small set, named by ROLE (what the value is used for).
-   Reuse a variable only when it is the SAME decision.
-   ========================================================= */
-:root {
-  --color-text: rgba(31,31,31,1);        /* body text, hamburger bars */
-  --color-text-hover: rgba(176,0,32,1);  /* link hover (about 7:1 on white) */
-  --color-primary: rgba(0,68,221,1);     /* button, focus ring (about 7:1 on white) */
-  --color-on-primary: rgba(255,255,255,1);     /* text on top of the primary color */
-  --color-border: rgba(154,154,154,1);      /* every divider and card border */
-  --color-surface: rgba(239,239,239,1);     /* mobile menu background */
 
-  --transition: 0.5s ease-in-out;  /* every hover and menu animation */
-  --bar-gap: 8px;               /* distance between hamburger bars */
+:root {
+  --color-text: rgba(31,31,31,1);        
+  --color-text-hover: rgba(176,0,32,1);  
+  --color-primary: rgba(0,68,221,1);     
+  --color-on-primary: rgba(255,255,255,1);     
+  --color-border: rgba(154,154,154,1);      
+  --color-surface: rgba(239,239,239,1);  
+
+  --transition: 0.5s ease-in-out;  
+  --bar-gap: 8px;               
 }
 
-/* =========================================================
-   2. BASE
-   ========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,9 +32,7 @@ ul {
   outline-offset: 3px;
 }
 
-/* =========================================================
-   3. LAYOUT
-   ========================================================= */
+
 .wrapper {
   max-width: 1200px;
   min-height: 100vh;
@@ -57,9 +49,7 @@ ul {
   border-bottom: 1px solid var(--color-border);
 }
 
-/* =========================================================
-   4. HEADER AND MENUS
-   ========================================================= */
+
 header {
   position: relative;
   display: flex;
@@ -99,7 +89,7 @@ header {
   border-right: 1px solid var(--color-border);
 }
 
-/* Both menus share the same link style */
+
 .main-menu a,
 .footer-menu a {
   color: var(--color-text);
@@ -113,11 +103,7 @@ header {
   color: var(--color-text-hover);
 }
 
-/* =========================================================
-   5. HAMBURGER BUTTON
-   Three bars. Open state: top and bottom bars rotate into
-   an X while the middle bar fades out.
-   ========================================================= */
+
 
 .menu-toggle {
   display: none;
@@ -131,96 +117,7 @@ header {
   padding: 0;
   position: relative;
 }
-/*.menu-toggle span {
-  display: block;
-  width: 100%;
-  height: 4px;
-  background-color: var(--color-text);
-  border-radius: 2px;
-  transition: opacity 0.2s ease; 
-}
 
-
-.menu-toggle span:nth-child(1) {
-  animation: topBarMorphReturn 0.6s ease forwards;
-}
-.menu-toggle.active span:nth-child(1) {
-  animation: topBarMorph 0.6s ease forwards;
-}
-
-
-.menu-toggle span:nth-child(2) {
-  opacity: 1;
-}
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-
-.menu-toggle span:nth-child(3) {
-  animation: bottomBarMorphReturn 0.6s ease forwards;
-}
-.menu-toggle.active span:nth-child(3) {
-  animation: bottomBarMorph 0.6s ease forwards;
-}
-
-
-
-@keyframes topBarMorph {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
- 
-  50% {
-    transform: translateY(10px) rotate(0deg);
-  }
-  
-  100% {
-    transform: translateY(10px) rotate(45deg);
-  }
-}
-@keyframes topBarMorphReturn {
-  0% {
-    transform: translateY(10px) rotate(45deg);
-    
-  }
-  
-  50% {
-    transform: translateY(10px) rotate(0deg);
-  }
-  
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}
-
-@keyframes bottomBarMorph {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  
-  50% {
-    transform: translateY(-10px) rotate(0deg);
-  }
-  
-  100% {
-    transform: translateY(-10px) rotate(-45deg);
-  }
-}
-@keyframes bottomBarMorphReturn {
-  0% {
-    transform: translateY(-10px) rotate(-45deg);
-    
-  }
-  
-  50% {
-    transform: translateY(-10px) rotate(0deg);
-  }
-  
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}*/
 
 .menu-toggle span {
   display: block;
@@ -228,21 +125,19 @@ header {
   height: 4px;
   background-color: var(--color-text);
   border-radius: 2px;
-  /* closing: rotate back first, then move out */
+ 
   transition: rotate 0.3s ease, translate 0.3s ease 0.3s, opacity 0.2s ease;
 }
 
 .menu-toggle.active span {
-  /* opening: move to the middle first, then rotate */
+
   transition: translate 0.3s ease, rotate 0.3s ease 0.3s, opacity 0.2s ease;
 }
 
 .menu-toggle.active span:nth-child(1) { translate: 0 10px;  rotate: 45deg; }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { translate: 0 -10px; rotate: -45deg; }
-/* =========================================================
-   6. HERO
-   ========================================================= */
+
 .hero-section {
   display: flex;
   flex-direction: column;
@@ -272,9 +167,7 @@ header {
   background-color: var(--color-primary);
 }
 
-/* =========================================================
-   7. CARDS
-   ========================================================= */
+
 .card-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -301,9 +194,7 @@ header {
   text-transform: uppercase;
 }
 
-/* =========================================================
-   8. FOOTER
-   ========================================================= */
+
 footer {
   display: flex;
   justify-content: space-between;

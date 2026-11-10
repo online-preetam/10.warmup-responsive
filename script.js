@@ -14,15 +14,19 @@ menuToggle.addEventListener('click', (e) =>{
  document.addEventListener('click', (e) => {
       if (!menuToggle.contains(e.target) && !mainMenu.contains(e.target)) {
         menuToggle.classList.remove('active');
-        mainMenu.classList.remove('open');
       }
 });
 
-document.querySelectorAll('.main-menu a').forEach(link => {
+mainMenu.addEventListener('click', (e) => {
+  if (e.target.closest('a')) {
+    menuToggle.classList.remove('active');
+  }
+});
+/*document.querySelectorAll('.main-menu a').forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault(); 
+        
         menuToggle.classList.remove('active');  
         mainMenu.classList.remove('open');    
        
       });
-    });
+    });*/
